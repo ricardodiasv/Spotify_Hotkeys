@@ -1,5 +1,3 @@
-
-# app.py
 import os
 import time
 import threading
@@ -16,7 +14,7 @@ SCOPES        = ["user-modify-playback-state", "user-read-playback-state"]
 STEP          = 5  
 
 app = Flask(__name__)
-app.secret_key = os.getenv("FLASK_SECRET_KEY", "troque_por_uma_chave_segura")
+app.secret_key = os.getenv("FLASK_SECRET_KEY", "coloque_uma_chave_segura")
 
 oauth = SpotifyOAuth(
     client_id=CLIENT_ID,
@@ -55,7 +53,7 @@ def set_volume(percent: int):
         return
     percent = max(0, min(100, percent))
     sp.volume(percent) 
-    print(f"🔊 Volume Spotify: {percent}% (device: {dev.get('name')})")
+    print(f"Volume Spotify: {percent}% (device: {dev.get('name')})")
 
 def bump_volume(delta: int):
     state = sp.current_playback()
@@ -63,6 +61,12 @@ def bump_volume(delta: int):
     if state and state.get("device"):
         current = state["device"].get("volume_percent", 50)
     set_volume(current + delta)
+
+def next_song():
+    sp.next_track(device_id=None)
+
+def previous_song():
+    sp.previous_track(device_id=None)
 
 def register_hotkeys():
     while not sp:
@@ -72,8 +76,10 @@ def register_hotkeys():
     keyboard.add_hotkey("ctrl+alt+down", lambda: bump_volume(-STEP))
     keyboard.add_hotkey("ctrl+alt+0",    lambda: set_volume(0))
     keyboard.add_hotkey("ctrl+alt+9",    lambda: set_volume(100))
+    keyboard.add_hotkey("ctrl+alt+right",    lambda: next_song())
+    keyboard.add_hotkey("ctrl+alt+left",    lambda: previous_song())
 
-    print("Hotkeys ativos: Ctrl+Alt+↑/↓/0/9. Pressione ESC no console para encerrar.")
+    print("Hotkeys ativos! Controle de volume: Ctrl+Alt+↑/↓/0/9 --- Passar/Voltar música: Ctrl+Alt+→/←. Pressione ESC no console para encerrar.")
     keyboard.wait("esc")
 
 @app.route("/")
