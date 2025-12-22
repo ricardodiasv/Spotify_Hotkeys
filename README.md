@@ -1,4 +1,4 @@
-# 🎧 spotify_hotkeys
+# spotify_hotkeys
 
 Atalhos globais (Windows) para controlar **o volume do Spotify** e **navegar entre músicas (próxima/anterior)**, mesmo com **outro aplicativo em foco**.
 
@@ -8,7 +8,7 @@ O projeto combina **Python + Flask + Spotipy (OAuth da Spotify Web API)** com a 
 
 ---
 
-## ✨ Funcionalidades
+## Funcionalidades
 
 * Hotkeys **globais** no Windows (funcionam com qualquer app em foco)
 * Controle de **volume absoluto** (0–100%) e **incremental** (±STEP)
@@ -20,7 +20,7 @@ O projeto combina **Python + Flask + Spotipy (OAuth da Spotify Web API)** com a 
 
 ---
 
-## 🧱 Tecnologias
+## Tecnologias
 
 * Python 3.10+
 * Flask
@@ -29,7 +29,7 @@ O projeto combina **Python + Flask + Spotipy (OAuth da Spotify Web API)** com a 
 
 ---
 
-## 🗂️ Estrutura do projeto
+## Estrutura do projeto
 
 ```text
 spotify_hotkeys/
@@ -44,7 +44,7 @@ spotify_hotkeys/
 
 ---
 
-## 🚀 Instalação
+## Instalação
 
 ```bash
 # Clone o repositório
@@ -61,7 +61,7 @@ pip install -r requirements.txt
 
 ---
 
-## 🔐 Configuração
+## Configuração
 
 ### Spotify Developer Dashboard
 
@@ -80,7 +80,7 @@ $env:FLASK_SECRET_KEY="uma_chave_segura"
 
 ---
 
-## ▶️ Execução
+## Execução
 
 ```bash
 python .\src\spotify_hotkeys.py
@@ -92,16 +92,16 @@ python .\src\spotify_hotkeys.py
 
 ---
 
-## 🎹 Hotkeys disponíveis
+## Hotkeys disponíveis
 
-### 🎚️ Volume
+### Volume
 
 * `Ctrl + Alt + ↑` → aumentar volume (+5%)
 * `Ctrl + Alt + ↓` → diminuir volume (−5%)
 * `Ctrl + Alt + 0` → volume 0% (mute)
 * `Ctrl + Alt + 9` → volume 100%
 
-### 🎵 Playback
+### Playback
 
 * `Ctrl + Alt + →` → próxima música
 * `Ctrl + Alt + ←` → música anterior
@@ -114,7 +114,7 @@ STEP = 5
 
 ---
 
-## 🧭 Funcionamento geral
+## Funcionamento geral
 
 1. O **Flask** inicia o fluxo de autenticação OAuth do Spotify.
 2. Após o login, o token é armazenado em cache local.
@@ -123,7 +123,7 @@ STEP = 5
 
 ---
 
-## 🩺 Troubleshooting
+## Troubleshooting
 
 * **Atalhos não funcionam**
 
@@ -140,13 +140,13 @@ STEP = 5
 
 ---
 
-## 🛡️ Segurança
+## Segurança
 
 * Nunca versione `.env` ou credenciais
 * Em caso de vazamento, gere um novo **Client Secret** no Dashboard
 
 ---
 
-## 📄 Licença
+## Licença
 
 MIT — veja o arquivo `LICENSE`.
